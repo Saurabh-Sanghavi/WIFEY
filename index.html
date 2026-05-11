@@ -34,47 +34,32 @@
             top: 0;
             z-index: 5;
             transition: 3s ease-in-out;
-            box-shadow: inset 0 0 30px rgba(255,255,255,0.5);
         }
 
-        .left-door {
-            left: 0;
-            border-right: 2px solid white;
-        }
+        .left-door { left: 0; }
+        .right-door { right: 0; }
 
-        .right-door {
-            right: 0;
-            border-left: 2px solid white;
-        }
-
-        .open .left-door {
-            transform: translateX(-100%);
-        }
-
-        .open .right-door {
-            transform: translateX(100%);
-        }
+        .open .left-door { transform: translateX(-100%); }
+        .open .right-door { transform: translateX(100%); }
 
         .content {
             position: absolute;
             width: 100%;
             height: 100%;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
             opacity: 0;
-            transition: opacity 2s ease;
+            transition: 2s;
         }
 
-        .open .content {
-            opacity: 1;
-        }
+        .open .content { opacity: 1; }
 
         h1 {
             font-family: 'Pacifico', cursive;
-            font-size: 65px;
             color: #ff4f87;
+            font-size: 60px;
             animation: bounce 1.5s infinite;
         }
 
@@ -84,31 +69,25 @@
         }
 
         .photo {
-            width: 280px;
-            border-radius: 25px;
-            margin-top: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            width: 260px;
+            border-radius: 20px;
         }
 
         button {
             position: absolute;
-            z-index: 10;
-            padding: 15px 35px;
+            padding: 15px 30px;
             border: none;
             border-radius: 30px;
             background: white;
             color: #ff4f87;
-            font-size: 18px;
             font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 10;
         }
 
-        /* hearts */
         .heart {
             position: absolute;
             color: pink;
-            font-size: 22px;
             animation: floatUp 6s linear infinite;
         }
 
@@ -123,14 +102,11 @@
             position: absolute;
             width: 100%;
             height: 100vh;
-            top: 0;
-            left: 0;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            background: linear-gradient(135deg,#ffd6e7,#ffc2d1,#ffe5ec);
             text-align: center;
-            background: linear-gradient(135deg, #ffd6e7, #ffc2d1, #ffe5ec);
-            z-index: 20;
         }
 
         #barContainer {
@@ -140,24 +116,62 @@
             background: white;
             border-radius: 30px;
             overflow: hidden;
-            margin-top: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
         #bar {
             height: 100%;
             width: 0%;
             background: linear-gradient(90deg,#ff4f87,#ff9a9e);
-            transition: 7s ease;
+            transition: 7s;
         }
 
         #result {
+            opacity: 0;
             margin-top: 20px;
+            font-weight: bold;
+            color: #ff4f87;
+        }
+
+        /* GAME */
+        #game {
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg,#ffe5ec,#ffc2d1,#ffd6e7);
+            text-align: center;
+        }
+
+        #heart {
+            font-size: 140px;
+            transition: 0.3s;
+        }
+
+        #fillText {
             font-size: 22px;
             font-weight: bold;
             color: #ff4f87;
-            opacity: 0;
-            transition: 1.5s;
+            margin-top: -30px;
+        }
+
+        #clickBtn {
+            margin-top: 25px;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 30px;
+            background: white;
+            color: #ff4f87;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #finalText {
+            margin-top: 20px;
+            color: #ff4f87;
+            font-size: 22px;
         }
 
     </style>
@@ -167,7 +181,6 @@
 
 <audio id="music" src="https://files.catbox.moe/0t48uw.mp3"></audio>
 
-<!-- ENTER BUTTON -->
 <button onclick="openDoors()" id="enterBtn">ENTER ❤️</button>
 
 <div class="container" id="container">
@@ -182,7 +195,6 @@
         <img class="photo"
         src="https://i.8upload.com/image/9c1ba2421492b403/1775055548027.jpg">
 
-        <!-- NEXT BUTTON (hidden initially) -->
         <button id="nextBtn" onclick="goNext()" style="display:none; margin-top:300px;">
             NEXT ➜
         </button>
@@ -194,7 +206,7 @@
 <!-- IDEA 4 -->
 <div id="idea4">
 
-    <h1 style="font-family:'Pacifico',cursive; color:#ff4f87;">
+    <h1 style="font-family:'Pacifico'; color:#ff4f87;">
         Checking Love Level 💖
     </h1>
 
@@ -202,44 +214,61 @@
         <div id="bar"></div>
     </div>
 
-    <div id="result">
-        ❤️ LOVE OVERFLOW DETECTED 😏
-    </div>
+    <div id="result">LOVE OVERFLOW 😏</div>
+
+    <button id="next2" onclick="startGame()" style="display:none; margin-top:20px;">
+        NEXT ➜
+    </button>
+
+</div>
+
+<!-- GAME (IDEA 5) -->
+<div id="game">
+
+    <h1 style="font-family:'Pacifico'; color:#ff4f87;">
+        💖 LOVE HEART GAME 💖
+    </h1>
+
+    <p style="color:#ff4f87; font-weight:bold;">
+        Click many times to fill the heart 💕
+    </p>
+
+    <div id="heart">🤍</div>
+    <div id="fillText">0%</div>
+
+    <button id="clickBtn" onclick="fillLove()">CLICK 💖</button>
+
+    <div id="finalText"></div>
 
 </div>
 
 <script>
 
+let love = 0;
+
+/* ENTER */
 function openDoors() {
 
     document.getElementById("container").classList.add("open");
-
     document.getElementById("enterBtn").style.display = "none";
-
     document.getElementById("music").play();
 
-    // show NEXT after 15 sec
     setTimeout(() => {
         document.getElementById("nextBtn").style.display = "block";
     }, 15000);
-
 }
 
-// floating hearts
+/* hearts */
 setInterval(() => {
+    let h = document.createElement("div");
+    h.className = "heart";
+    h.innerHTML = "💖";
+    h.style.left = Math.random()*100+"vw";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),6000);
+},300);
 
-    let heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "💖";
-    heart.style.left = Math.random() * 100 + "vw";
-
-    document.body.appendChild(heart);
-
-    setTimeout(() => heart.remove(), 6000);
-
-}, 300);
-
-// NEXT BUTTON FUNCTION (FIXED)
+/* IDEA 4 */
 function goNext() {
 
     document.getElementById("container").style.display = "none";
@@ -247,12 +276,48 @@ function goNext() {
 
     setTimeout(() => {
         document.getElementById("bar").style.width = "100%";
-    }, 800);
+    },800);
 
     setTimeout(() => {
         document.getElementById("result").style.opacity = "1";
-    }, 7000);
+    },7000);
 
+    setTimeout(() => {
+        document.getElementById("next2").style.display = "block";
+    },8500);
+
+}
+
+/* START GAME */
+function startGame() {
+
+    document.getElementById("idea4").style.display = "none";
+    document.getElementById("game").style.display = "flex";
+
+}
+
+/* HARD HEART GAME */
+function fillLove() {
+
+    if(love < 100) {
+        love += Math.floor(Math.random()*2) + 1; // very slow
+    }
+
+    if(love > 100) love = 100;
+
+    document.getElementById("fillText").innerText = love + "%";
+
+    let heart = document.getElementById("heart");
+
+    if(love < 30) heart.innerHTML = "🤍";
+    else if(love < 60) heart.innerHTML = "🩷";
+    else if(love < 90) heart.innerHTML = "💖";
+    else heart.innerHTML = "❤️";
+
+    if(love === 100) {
+        document.getElementById("finalText").innerHTML =
+        "💖 YOU COMPLETELY FILLED MY HEART 💖";
+    }
 }
 
 </script>
