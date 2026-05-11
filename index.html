@@ -267,9 +267,7 @@
 
 <!-- IDEA 4 -->
 <div id="idea4">
-    <h1 style="font-family:'Pacifico'; color:#ff4f87;">
-        Checking Love Level 💖
-    </h1>
+    <h1>Checking Love Level 💖</h1>
 
     <div id="barContainer">
         <div id="bar"></div>
@@ -285,9 +283,7 @@
 <!-- GAME -->
 <div id="game">
 
-    <h1 style="font-family:'Pacifico'; color:#ff4f87;">
-        💖 LOVE HEART GAME 💖
-    </h1>
+    <h1>💖 LOVE HEART GAME 💖</h1>
 
     <div id="heart">🤍</div>
     <div id="fillText">0%</div>
@@ -436,6 +432,29 @@ function startHack() {
 
                 <h2 style="color:#00ff88;">HUSBAND & WIFE FOREVER ❤️</h2>
                 `;
+
+                // ✅ ADDED NEXT SCREEN TRIGGER ONLY
+                setTimeout(() => {
+                    hack.innerHTML += `
+                        <button id="nextHackBtn"
+                        style="margin-top:20px;padding:12px 25px;border:none;border-radius:20px;cursor:pointer;">
+                            NEXT ➜
+                        </button>
+                    `;
+
+                    document.getElementById("nextHackBtn").onclick = function () {
+                        hack.innerHTML = `
+                            <div style="font-size:40px;color:#00ff88;animation:flicker 1s infinite;">
+                                WILL YOU STAY FOREVER WITH ME?
+                            </div>
+
+                            <div style="position:absolute;bottom:20px;font-size:12px;color:#00ff88;">
+                                Reply on WhatsApp 💬
+                            </div>
+                        `;
+                    };
+
+                }, 5000);
             }
         }, 100);
     }
