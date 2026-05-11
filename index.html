@@ -211,14 +211,13 @@
             font-size: 28px;
             color: #00ff88;
             margin-bottom: 20px;
-            text-shadow: 0 0 10px #00ff88;
             animation: flicker 1s infinite;
         }
 
         @keyframes flicker {
-            0% { opacity: 1; text-shadow: 0 0 10px #00ff88; }
-            50% { opacity: 0.4; text-shadow: 0 0 2px #00ff88; }
-            100% { opacity: 1; text-shadow: 0 0 12px #00ff88; }
+            0% { opacity: 1; }
+            50% { opacity: 0.4; }
+            100% { opacity: 1; }
         }
 
         #loadingBar {
@@ -231,13 +230,7 @@
             margin-top: 15px;
         }
 
-        #loadingFill {
-            height: 100%;
-            width: 0%;
-            background: #00ff88;
-        }
-
-        #loadingFill2 {
+        #loadingFill, #loadingFill2 {
             height: 100%;
             width: 0%;
             background: #00ff88;
@@ -368,7 +361,7 @@ function fillLove() {
     }
 }
 
-/* IDEA 8 FULL */
+/* IDEA 8 */
 function startHack() {
 
     document.getElementById("game").style.display = "none";
@@ -403,8 +396,7 @@ function startHack() {
 
         hack.innerHTML += "<br>> Accessing heart database...<br>";
 
-        hack.innerHTML += `
-        <div id="loadingBar"><div id="loadingFill"></div></div>`;
+        hack.innerHTML += `<div id="loadingBar"><div id="loadingFill"></div></div>`;
 
         let fill = document.getElementById("loadingFill");
         let w = 0;
@@ -424,8 +416,7 @@ function startHack() {
 
         hack.innerHTML += "<br>> Memory loading...<br>";
 
-        hack.innerHTML += `
-        <div id="loadingBar"><div id="loadingFill2"></div></div>`;
+        hack.innerHTML += `<div id="loadingBar"><div id="loadingFill2"></div></div>`;
 
         let fill = document.getElementById("loadingFill2");
         let w = 0;
@@ -439,11 +430,11 @@ function startHack() {
 
                 hack.innerHTML = `
                 <div id="hackTitle">MEMORY FOUND ❤️</div>
+
                 <img src="https://i.8upload.com/image/a4b86d21b46b2f23/1778524562721.jpg"
                 style="width:250px;border-radius:20px;margin-top:20px;">
+
                 <h2 style="color:#00ff88;">HUSBAND & WIFE FOREVER ❤️</h2>
-                <button style="padding:15px 35px;border:none;border-radius:30px;background:white;color:#ff4f87;font-weight:bold;margin-top:15px;">
-                NEXT ➜</button>
                 `;
             }
         }, 100);
