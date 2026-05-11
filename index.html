@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>WIFEY ❤️</title>
+    <title>Welcome To My Heart ❤️</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
@@ -13,61 +13,58 @@
             overflow: hidden;
             background: linear-gradient(135deg, #ffd6e7, #ffc2d1, #ffe5ec);
             height: 100vh;
-            font-family: Arial;
-            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
         }
 
-        /* Floating Hearts */
-        .heart {
-            position: absolute;
-            color: pink;
-            font-size: 22px;
-            animation: floatUp 7s linear infinite;
-            z-index: 1;
-            opacity: 0.8;
-        }
-
-        @keyframes floatUp {
-            0% { transform: translateY(100vh); opacity: 1; }
-            100% { transform: translateY(-120px); opacity: 0; }
-        }
-
-        /* Container */
         .container {
             position: relative;
             width: 100%;
             height: 100vh;
-            z-index: 2;
+            overflow: hidden;
         }
 
-        /* Doors */
         .door {
             position: absolute;
             width: 50%;
             height: 100%;
-            top: 0;
             background: #ffb6c1;
+            top: 0;
             z-index: 5;
             transition: 3s ease-in-out;
+            box-shadow: inset 0 0 30px rgba(255,255,255,0.5);
         }
 
-        .left-door { left: 0; }
-        .right-door { right: 0; }
+        .left-door {
+            left: 0;
+            border-right: 2px solid white;
+        }
 
-        .open .left-door { transform: translateX(-100%); }
-        .open .right-door { transform: translateX(100%); }
+        .right-door {
+            right: 0;
+            border-left: 2px solid white;
+        }
 
-        /* Content */
+        .open .left-door {
+            transform: translateX(-100%);
+        }
+
+        .open .right-door {
+            transform: translateX(100%);
+        }
+
         .content {
             position: absolute;
             width: 100%;
             height: 100%;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             opacity: 0;
-            transition: 2s;
+            transition: opacity 2s ease;
         }
 
         .open .content {
@@ -76,8 +73,9 @@
 
         h1 {
             font-family: 'Pacifico', cursive;
-            font-size: 60px;
+            font-size: 65px;
             color: #ff4f87;
+            text-shadow: 0 5px 15px rgba(255,105,180,0.5);
             animation: bounce 1.5s infinite;
         }
 
@@ -90,11 +88,18 @@
             width: 280px;
             border-radius: 25px;
             margin-top: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            animation: fadeIn 3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         button {
-            margin-top: 25px;
+            position: absolute;
+            z-index: 10;
             padding: 15px 35px;
             border: none;
             border-radius: 30px;
@@ -103,20 +108,39 @@
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* hearts */
+        .heart {
+            position: absolute;
+            color: pink;
+            font-size: 22px;
+            animation: floatUp 6s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh); opacity: 1; }
+            100% { transform: translateY(-120px); opacity: 0; }
         }
 
         /* IDEA 4 */
         #idea4 {
             display: none;
+            position: absolute;
+            width: 100%;
             height: 100vh;
+            top: 0;
+            left: 0;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
-            z-index: 3;
-            position: relative;
+            text-align: center;
+            background: linear-gradient(135deg, #ffd6e7, #ffc2d1, #ffe5ec);
+            z-index: 20;
         }
 
-        .bar-container {
+        #barContainer {
             width: 80%;
             max-width: 400px;
             height: 25px;
@@ -124,13 +148,14 @@
             border-radius: 30px;
             overflow: hidden;
             margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
         #bar {
             height: 100%;
             width: 0%;
             background: linear-gradient(90deg,#ff4f87,#ff9a9e);
-            transition: 6s ease; /* ⬅️ SLOWER LOVE METER */
+            transition: 7s ease;
         }
 
         #result {
@@ -147,26 +172,11 @@
 
 <body>
 
-<!-- MUSIC -->
 <audio id="music" src="https://files.catbox.moe/0t48uw.mp3"></audio>
 
-<!-- FLOATING HEARTS -->
-<script>
-setInterval(() => {
+<!-- ENTER BUTTON -->
+<button onclick="openDoors()">ENTER ❤️</button>
 
-    let heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "💖";
-    heart.style.left = Math.random() * 100 + "vw";
-
-    document.body.appendChild(heart);
-
-    setTimeout(() => heart.remove(), 7000);
-
-}, 250);
-</script>
-
-<!-- MAIN -->
 <div class="container" id="container">
 
     <div class="door left-door"></div>
@@ -179,25 +189,25 @@ setInterval(() => {
         <img class="photo"
         src="https://i.8upload.com/image/9c1ba2421492b403/1775055548027.jpg">
 
-        <button onclick="goNext()">NEXT ➜</button>
+        <button onclick="goNext()" style="margin-top:300px;">NEXT ➜</button>
 
     </div>
 
 </div>
 
 <!-- IDEA 4 -->
-<div id="idea4" style="display:none;">
+<div id="idea4">
 
-    <h1 style="color:#ff4f87; margin-top:100px;">
+    <h1 style="font-family:'Pacifico',cursive; color:#ff4f87;">
         Checking Love Level 💖
     </h1>
 
-    <div class="bar-container">
+    <div id="barContainer">
         <div id="bar"></div>
     </div>
 
     <div id="result">
-        Result: ❤️ LOVE OVERFLOW DETECTED 😏
+        ❤️ LOVE OVERFLOW DETECTED 😏
     </div>
 
 </div>
@@ -205,27 +215,42 @@ setInterval(() => {
 <script>
 
 function openDoors() {
+
     document.getElementById("container").classList.add("open");
+
+    document.querySelector("button").style.display = "none";
+
     document.getElementById("music").play();
+
 }
 
-// auto open
-setTimeout(openDoors, 500);
+/* floating hearts */
+setInterval(() => {
 
-// NEXT
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+
+}, 300);
+
+/* NEXT */
 function goNext() {
 
     document.getElementById("container").style.display = "none";
     document.getElementById("idea4").style.display = "flex";
 
-    // slower suspense loading
     setTimeout(() => {
         document.getElementById("bar").style.width = "100%";
     }, 800);
 
     setTimeout(() => {
         document.getElementById("result").style.opacity = "1";
-    }, 6500); // ⬅️ MORE TIME ADDED
+    }, 7000);
 
 }
 
