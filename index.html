@@ -75,7 +75,6 @@
             font-family: 'Pacifico', cursive;
             font-size: 65px;
             color: #ff4f87;
-            text-shadow: 0 5px 15px rgba(255,105,180,0.5);
             animation: bounce 1.5s infinite;
         }
 
@@ -89,12 +88,6 @@
             border-radius: 25px;
             margin-top: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-            animation: fadeIn 3s;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
         }
 
         button {
@@ -175,7 +168,7 @@
 <audio id="music" src="https://files.catbox.moe/0t48uw.mp3"></audio>
 
 <!-- ENTER BUTTON -->
-<button onclick="openDoors()">ENTER ❤️</button>
+<button onclick="openDoors()" id="enterBtn">ENTER ❤️</button>
 
 <div class="container" id="container">
 
@@ -189,7 +182,10 @@
         <img class="photo"
         src="https://i.8upload.com/image/9c1ba2421492b403/1775055548027.jpg">
 
-        <button onclick="goNext()" style="margin-top:300px;">NEXT ➜</button>
+        <!-- NEXT BUTTON (hidden initially) -->
+        <button id="nextBtn" onclick="goNext()" style="display:none; margin-top:300px;">
+            NEXT ➜
+        </button>
 
     </div>
 
@@ -218,13 +214,18 @@ function openDoors() {
 
     document.getElementById("container").classList.add("open");
 
-    document.querySelector("button").style.display = "none";
+    document.getElementById("enterBtn").style.display = "none";
 
     document.getElementById("music").play();
 
+    // show NEXT after 15 sec
+    setTimeout(() => {
+        document.getElementById("nextBtn").style.display = "block";
+    }, 15000);
+
 }
 
-/* floating hearts */
+// floating hearts
 setInterval(() => {
 
     let heart = document.createElement("div");
@@ -238,7 +239,7 @@ setInterval(() => {
 
 }, 300);
 
-/* NEXT */
+// NEXT BUTTON FUNCTION (FIXED)
 function goNext() {
 
     document.getElementById("container").style.display = "none";
@@ -257,4 +258,5 @@ function goNext() {
 </script>
 
 </body>
+
 </html>
