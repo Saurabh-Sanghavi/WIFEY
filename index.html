@@ -158,7 +158,7 @@
         }
 
         #clickBtn {
-            margin-top: 25px;
+            margin-top: 60px;
             padding: 15px 35px;
             border: none;
             border-radius: 30px;
@@ -172,6 +172,75 @@
             margin-top: 20px;
             color: #ff4f87;
             font-size: 22px;
+        }
+
+        #nextGameBtn {
+            display: none;
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 15px 35px;
+            border: none;
+            border-radius: 30px;
+            background: white;
+            color: #ff4f87;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* IDEA 8 */
+        #hack {
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            background: black;
+            color: #00ff88;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: monospace;
+            text-align: center;
+            font-size: 16px;
+            line-height: 1.6;
+            text-shadow: 0 0 8px #00ff88;
+        }
+
+        #hackTitle {
+            font-size: 28px;
+            color: #00ff88;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #00ff88;
+            animation: flicker 1s infinite;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 1; text-shadow: 0 0 10px #00ff88; }
+            50% { opacity: 0.4; text-shadow: 0 0 2px #00ff88; }
+            100% { opacity: 1; text-shadow: 0 0 12px #00ff88; }
+        }
+
+        #loadingBar {
+            width: 80%;
+            max-width: 300px;
+            height: 20px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        #loadingFill {
+            height: 100%;
+            width: 0%;
+            background: #00ff88;
+        }
+
+        #loadingFill2 {
+            height: 100%;
+            width: 0%;
+            background: #00ff88;
         }
 
     </style>
@@ -205,7 +274,6 @@
 
 <!-- IDEA 4 -->
 <div id="idea4">
-
     <h1 style="font-family:'Pacifico'; color:#ff4f87;">
         Checking Love Level 💖
     </h1>
@@ -219,19 +287,14 @@
     <button id="next2" onclick="startGame()" style="display:none; margin-top:20px;">
         NEXT ➜
     </button>
-
 </div>
 
-<!-- GAME (IDEA 5) -->
+<!-- GAME -->
 <div id="game">
 
     <h1 style="font-family:'Pacifico'; color:#ff4f87;">
         💖 LOVE HEART GAME 💖
     </h1>
-
-    <p style="color:#ff4f87; font-weight:bold;">
-        Click many times to fill the heart 💕
-    </p>
 
     <div id="heart">🤍</div>
     <div id="fillText">0%</div>
@@ -240,15 +303,18 @@
 
     <div id="finalText"></div>
 
+    <button id="nextGameBtn" onclick="startHack()">NEXT ➜</button>
+
 </div>
+
+<!-- IDEA 8 -->
+<div id="hack"></div>
 
 <script>
 
 let love = 0;
 
-/* ENTER */
 function openDoors() {
-
     document.getElementById("container").classList.add("open");
     document.getElementById("enterBtn").style.display = "none";
     document.getElementById("music").play();
@@ -258,19 +324,7 @@ function openDoors() {
     }, 15000);
 }
 
-/* hearts */
-setInterval(() => {
-    let h = document.createElement("div");
-    h.className = "heart";
-    h.innerHTML = "💖";
-    h.style.left = Math.random()*100+"vw";
-    document.body.appendChild(h);
-    setTimeout(()=>h.remove(),6000);
-},300);
-
-/* IDEA 4 */
 function goNext() {
-
     document.getElementById("container").style.display = "none";
     document.getElementById("idea4").style.display = "flex";
 
@@ -285,24 +339,16 @@ function goNext() {
     setTimeout(() => {
         document.getElementById("next2").style.display = "block";
     },8500);
-
 }
 
-/* START GAME */
 function startGame() {
-
     document.getElementById("idea4").style.display = "none";
     document.getElementById("game").style.display = "flex";
-
 }
 
-/* HARD HEART GAME */
 function fillLove() {
 
-    if(love < 100) {
-        love += Math.floor(Math.random()*2) + 1; // very slow
-    }
-
+    if(love < 100) love += Math.floor(Math.random()*2)+1;
     if(love > 100) love = 100;
 
     document.getElementById("fillText").innerText = love + "%";
@@ -317,11 +363,96 @@ function fillLove() {
     if(love === 100) {
         document.getElementById("finalText").innerHTML =
         "💖 YOU COMPLETELY FILLED MY HEART 💖";
+
+        document.getElementById("nextGameBtn").style.display = "block";
     }
+}
+
+/* IDEA 8 FULL */
+function startHack() {
+
+    document.getElementById("game").style.display = "none";
+
+    let hack = document.getElementById("hack");
+    hack.style.display = "flex";
+
+    hack.innerHTML = `<div id="hackTitle">HACKING SYSTEM</div>`;
+
+    let lines = [
+        "Initializing system...",
+        "Bypassing security firewall...",
+        "Decrypting emotions...",
+        "Scanning neural memory...",
+        "Connecting heart server...",
+        "Access granted..."
+    ];
+
+    let i = 0;
+
+    function typeTerminal() {
+        if (i < lines.length) {
+            hack.innerHTML += lines[i] + "<br>";
+            i++;
+            setTimeout(typeTerminal, 1800);
+        } else {
+            accessDB();
+        }
+    }
+
+    function accessDB() {
+
+        hack.innerHTML += "<br>> Accessing heart database...<br>";
+
+        hack.innerHTML += `
+        <div id="loadingBar"><div id="loadingFill"></div></div>`;
+
+        let fill = document.getElementById("loadingFill");
+        let w = 0;
+
+        let interval = setInterval(() => {
+            w += 2;
+            fill.style.width = w + "%";
+
+            if (w >= 100) {
+                clearInterval(interval);
+                memoryLoad();
+            }
+        }, 100);
+    }
+
+    function memoryLoad() {
+
+        hack.innerHTML += "<br>> Memory loading...<br>";
+
+        hack.innerHTML += `
+        <div id="loadingBar"><div id="loadingFill2"></div></div>`;
+
+        let fill = document.getElementById("loadingFill2");
+        let w = 0;
+
+        let interval = setInterval(() => {
+            w += 1;
+            fill.style.width = w + "%";
+
+            if (w >= 100) {
+                clearInterval(interval);
+
+                hack.innerHTML = `
+                <div id="hackTitle">MEMORY FOUND ❤️</div>
+                <img src="https://i.8upload.com/image/9c1ba2421492b403/1775055548027.jpg"
+                style="width:250px;border-radius:20px;margin-top:20px;">
+                <h2 style="color:#00ff88;">Forever starts here ❤️</h2>
+                <button style="padding:15px 35px;border:none;border-radius:30px;background:white;color:#ff4f87;font-weight:bold;margin-top:15px;">
+                NEXT ➜</button>
+                `;
+            }
+        }, 100);
+    }
+
+    typeTerminal();
 }
 
 </script>
 
 </body>
-
 </html>
