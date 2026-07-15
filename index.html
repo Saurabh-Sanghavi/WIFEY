@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -18,12 +19,11 @@ box-sizing:border-box;
 }
 
 body{
-
 background:#FDECEF;
 font-family:'Poppins',sans-serif;
 overflow:hidden;
-
 }
+
 
 .page{
 
@@ -40,25 +40,29 @@ position:absolute;
 top:0;
 left:100%;
 
-transition:0.8s;
+transition:0.8s ease;
 
 padding:40px;
 
 }
 
+
 #page1{
-
 left:0;
-
 }
+
+
+/* PAGE 1 */
 
 .title{
 
 font-family:'Great Vibes',cursive;
 font-size:90px;
 color:#d63384;
+text-align:center;
 
 }
+
 
 .subtitle{
 
@@ -68,40 +72,54 @@ color:#8b5d73;
 
 }
 
+
 .btn{
 
-margin-top:60px;
+margin-top:40px;
+
 padding:15px 45px;
 
 background:#ff69b4;
+
 color:white;
 
 border:none;
+
 border-radius:40px;
 
 font-size:20px;
 
 cursor:pointer;
 
+transition:.3s;
+
 }
+
 
 .btn:hover{
 
 background:#ff4f9d;
 
+transform:scale(1.05);
+
 }
+
+
 
 /* PAGE 2 */
 
 .container{
 
 display:flex;
+
 justify-content:space-between;
+
 align-items:center;
 
 width:90%;
 
 }
+
 
 .left{
 
@@ -109,19 +127,26 @@ width:45%;
 
 }
 
+
 .left h1{
 
 font-family:'Great Vibes',cursive;
+
 font-size:80px;
+
 color:#d63384;
 
 }
+
+
 
 .right{
 
 width:35%;
 
 }
+
+
 
 .box{
 
@@ -140,6 +165,11 @@ font-size:24px;
 box-shadow:0 5px 15px rgba(0,0,0,.1);
 
 }
+
+
+
+/* PAGE 3 */
+
 
 .letter{
 
@@ -161,23 +191,35 @@ overflow-y:auto;
 
 }
 
+
+
 .letter h1{
 
 font-family:'Great Vibes',cursive;
+
 font-size:60px;
+
 text-align:center;
+
 color:#d63384;
 
 }
 
+
+
 .letter p{
 
 margin-top:25px;
+
 font-size:19px;
+
 line-height:1.9;
+
 color:#555;
 
 }
+
+
 
 .signature{
 
@@ -193,13 +235,19 @@ color:#d63384;
 
 }
 
+
 </style>
 
 </head>
 
+
 <body>
 
+
+<!-- PAGE 1 -->
+
 <div id="page1" class="page">
+
 
 <h1 class="title">
 
@@ -207,11 +255,13 @@ Hello Baacha ❤️
 
 </h1>
 
+
 <p class="subtitle">
 
 Welcome to our little world
 
 </p>
+
 
 <button class="btn" onclick="next(1)">
 
@@ -219,35 +269,77 @@ Next ❤️
 
 </button>
 
+
 </div>
+
+
+
+
+
+<!-- PAGE 2 -->
+
 
 <div id="page2" class="page">
 
+
 <div class="container">
 
+
 <div class="left">
+
 
 <h1>
 
 Happy<br>
+
 6-Month<br>
+
 Anniversary ❤️
 
 </h1>
 
+
 </div>
+
+
 
 <div class="right">
 
-<div class="box">🌸 Half Year</div>
 
-<div class="box">💕 6 Months</div>
+<div class="box">
 
-<div class="box">📅 183 Days</div>
+🌸 Half Year
 
-<div class="box">💖 26 Weeks</div>
+</div>
 
-<div class="box">⏰ 4380 Hours</div>
+
+<div class="box">
+
+💕 6 Months
+
+</div>
+
+
+<div class="box">
+
+📅 183 Days
+
+</div>
+
+
+<div class="box">
+
+💖 26 Weeks
+
+</div>
+
+
+<div class="box">
+
+⏰ 4380 Hours
+
+</div>
+
 
 <button class="btn" onclick="next(2)">
 
@@ -255,15 +347,28 @@ Read My Letter ❤️
 
 </button>
 
-</div>
+
 
 </div>
 
+
 </div>
+
+
+</div>
+
+
+
+
+
+<!-- PAGE 3 -->
+
 
 <div id="page3" class="page">
 
+
 <div class="letter">
+
 
 <h1>
 
@@ -271,85 +376,109 @@ Read My Letter ❤️
 
 </h1>
 
-<pHappy 6 Months, My Baacha ❤️
+
+
+<p>
+
+Happy 6 Months, My Baacha ❤️
 
 <br><br>
+
 
 Six months ago, I never imagined that one person could bring so much happiness into my life.
 
 <br><br>
 
+
 Thank you for every smile, every late-night conversation, every laugh, every little fight, and every beautiful memory we've created together.
 
 <br><br>
+
 
 You have become my safe place, my biggest happiness, and my favourite person.
 
 <br><br>
 
+
 No matter what life brings, I promise to always choose you, support you, respect you, and love you with all my heart.
 
 <br><br>
+
 
 These six months are only the beginning of our beautiful story.
 
 <br><br>
 
+
 I can't wait to celebrate many more months, years, and a lifetime together with you.
 
 <br><br>
 
+
 Happy 6-Month Anniversary, My Love ❤️
 
+
 </p>
+
+
 
 <div class="signature">
 
 Forever Yours,<br>
+
 Saurabh ❤️
 
 </div>
 
-<button class="btn" onclick="finishLove()">
-
-I Love You ❤️
-
-</button>
 
 </div>
 
+
 </div>
 
- function next(page){
+
+
+
+
+<script>
+
+
+function next(page){
+
 
 if(page===1){
 
+
 document.getElementById("page1").style.left="-100%";
+
 document.getElementById("page2").style.left="0";
 
+
 }
 
-if(page===2){
+
+
+else if(page===2){
+
 
 document.getElementById("page2").style.left="-100%";
+
 document.getElementById("page3").style.left="0";
 
-document.body.style.overflowY="auto";
+
+document.body.style.overflow="auto";
+
 
 }
 
-}
-
-function finishLove(){
-
-alert("❤️ Happy 6-Month Anniversary ❤️\n\nI Love You Forever, Baacha 💖");
 
 }
+
 
 </script>
 
-</body>
-</html> 
 
-<script>>
-  
+
+</body>
+
+</html>
