@@ -1,466 +1,139 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Welcome To My Heart ❤️</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<title>Hello Baacha ❤️</title>
 
-    <style>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
-        body {
-            margin: 0;
-            overflow: hidden;
-            background: linear-gradient(135deg, #ffd6e7, #ffc2d1, #ffe5ec);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: Arial, sans-serif;
-        }
+<style>
 
-        .container {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            overflow: hidden;
-        }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-        .door {
-            position: absolute;
-            width: 50%;
-            height: 100%;
-            background: #ffb6c1;
-            top: 0;
-            z-index: 5;
-            transition: 3s ease-in-out;
-        }
+body{
+overflow:hidden;
+background:#FDECEF;
+font-family:Arial, sans-serif;
+height:100vh;
+}
 
-        .left-door { left: 0; }
-        .right-door { right: 0; }
+/* Sliding Doors */
 
-        .open .left-door { transform: translateX(-100%); }
-        .open .right-door { transform: translateX(100%); }
+.door{
+position:fixed;
+top:0;
+width:50%;
+height:100%;
+background:#F8C8DC;
+z-index:10;
+transition:2.2s ease-in-out;
+}
 
-        .content {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: 2s;
-        }
+.left{
+left:0;
+border-right:2px solid rgba(255,255,255,.35);
+}
 
-        .open .content { opacity: 1; }
+.right{
+right:0;
+border-left:2px solid rgba(255,255,255,.35);
+}
 
-        h1 {
-            font-family: 'Pacifico', cursive;
-            color: #ff4f87;
-            font-size: 60px;
-            animation: bounce 1.5s infinite;
-        }
+body.open .left{
+transform:translateX(-100%);
+}
 
-        @keyframes bounce {
-            0%,100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
+body.open .right{
+transform:translateX(100%);
+}
 
-        .photo {
-            width: 260px;
-            border-radius: 20px;
-        }
+/* Main */
 
-        button {
-            position: absolute;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 30px;
-            background: white;
-            color: #ff4f87;
-            font-weight: bold;
-            cursor: pointer;
-            z-index: 10;
-        }
+.container{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+opacity:0;
+transform:scale(.9);
+transition:1.5s;
+}
 
-        .heart {
-            position: absolute;
-            color: pink;
-            animation: floatUp 6s linear infinite;
-        }
+body.open .container{
+opacity:1;
+transform:scale(1);
+}
 
-        @keyframes floatUp {
-            0% { transform: translateY(100vh); opacity: 1; }
-            100% { transform: translateY(-120px); opacity: 0; }
-        }
+h1{
 
-        /* IDEA 4 */
-        #idea4 {
-            display: none;
-            position: absolute;
-            width: 100%;
-            height: 100vh;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg,#ffd6e7,#ffc2d1,#ffe5ec);
-            text-align: center;
-        }
+font-family:'Great Vibes',cursive;
+font-size:92px;
+font-weight:normal;
+color:#d63384;
+text-shadow:
+0 0 10px rgba(255,255,255,.9),
+0 0 30px rgba(255,182,193,.7);
 
-        #barContainer {
-            width: 80%;
-            max-width: 400px;
-            height: 25px;
-            background: white;
-            border-radius: 30px;
-            overflow: hidden;
-        }
+animation:float 3s ease-in-out infinite;
+}
 
-        #bar {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg,#ff4f87,#ff9a9e);
-            transition: 7s;
-        }
+@keyframes float{
 
-        #result {
-            opacity: 0;
-            margin-top: 20px;
-            font-weight: bold;
-            color: #ff4f87;
-        }
+0%{
+transform:translateY(0px);
+}
 
-        /* GAME */
-        #game {
-            display: none;
-            position: absolute;
-            width: 100%;
-            height: 100vh;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg,#ffe5ec,#ffc2d1,#ffd6e7);
-            text-align: center;
-        }
+50%{
+transform:translateY(-10px);
+}
 
-        #heart {
-            font-size: 140px;
-            transition: 0.3s;
-        }
+100%{
+transform:translateY(0px);
+}
 
-        #fillText {
-            font-size: 22px;
-            font-weight: bold;
-            color: #ff4f87;
-            margin-top: -30px;
-        }
+}
 
-        #clickBtn {
-            margin-top: 60px;
-            padding: 15px 35px;
-            border: none;
-            border-radius: 30px;
-            background: white;
-            color: #ff4f87;
-            font-weight: bold;
-            cursor: pointer;
-        }
+.small{
+margin-top:18px;
+font-size:20px;
+color:#b05c82;
+letter-spacing:3px;
+opacity:.8;
+font-family:Georgia, serif;
+}
 
-        #finalText {
-            margin-top: 20px;
-            color: #ff4f87;
-            font-size: 22px;
-        }
+</style>
 
-        #nextGameBtn {
-            display: none;
-            position: absolute;
-            bottom: 60px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 15px 35px;
-            border: none;
-            border-radius: 30px;
-            background: white;
-            color: #ff4f87;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        /* IDEA 8 */
-        #hack {
-            display: none;
-            position: absolute;
-            width: 100%;
-            height: 100vh;
-            background: black;
-            color: #00ff88;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            font-family: monospace;
-            text-align: center;
-            font-size: 16px;
-            line-height: 1.6;
-            text-shadow: 0 0 8px #00ff88;
-        }
-
-        #hackTitle {
-            font-size: 28px;
-            color: #00ff88;
-            margin-bottom: 20px;
-            animation: flicker 1s infinite;
-        }
-
-        @keyframes flicker {
-            0% { opacity: 1; }
-            50% { opacity: 0.4; }
-            100% { opacity: 1; }
-        }
-
-        #loadingBar {
-            width: 80%;
-            max-width: 300px;
-            height: 20px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 20px;
-            overflow: hidden;
-            margin-top: 15px;
-        }
-
-        #loadingFill, #loadingFill2 {
-            height: 100%;
-            width: 0%;
-            background: #00ff88;
-        }
-
-    </style>
 </head>
-
 <body>
 
-<audio id="music" src="https://files.catbox.moe/0t48uw.mp3"></audio>
+<div class="door left"></div>
+<div class="door right"></div>
 
-<button onclick="openDoors()" id="enterBtn">ENTER ❤️</button>
+<div class="container">
 
-<div class="container" id="container">
+<h1>Hello Baacha ❤️</h1>
 
-    <div class="door left-door"></div>
-    <div class="door right-door"></div>
-
-    <div class="content">
-
-        <h1>Welcome To My Heart ❤️</h1>
-
-        <img class="photo"
-        src="https://i.8upload.com/image/9c1ba2421492b403/1775055548027.jpg">
-
-        <button id="nextBtn" onclick="goNext()" style="display:none; margin-top:300px;">
-            NEXT ➜
-        </button>
-
-    </div>
-
+<div class="small">
+It's 16 July Today
 </div>
 
-<!-- IDEA 4 -->
-<div id="idea4">
-    <h1>Checking Love Level 💖</h1>
-
-    <div id="barContainer">
-        <div id="bar"></div>
-    </div>
-
-    <div id="result">LOVE OVERFLOW 😏</div>
-
-    <button id="next2" onclick="startGame()" style="display:none; margin-top:20px;">
-        NEXT ➜
-    </button>
 </div>
-
-<!-- GAME -->
-<div id="game">
-
-    <h1>💖 LOVE HEART GAME 💖</h1>
-
-    <div id="heart">🤍</div>
-    <div id="fillText">0%</div>
-
-    <button id="clickBtn" onclick="fillLove()">CLICK 💖</button>
-
-    <div id="finalText"></div>
-
-    <button id="nextGameBtn" onclick="startHack()">NEXT ➜</button>
-
-</div>
-
-<!-- IDEA 8 -->
-<div id="hack"></div>
 
 <script>
 
-let love = 0;
+setTimeout(()=>{
 
-function openDoors() {
-    document.getElementById("container").classList.add("open");
-    document.getElementById("enterBtn").style.display = "none";
-    document.getElementById("music").play();
+document.body.classList.add("open");
 
-    setTimeout(() => {
-        document.getElementById("nextBtn").style.display = "block";
-    }, 15000);
-}
-
-function goNext() {
-    document.getElementById("container").style.display = "none";
-    document.getElementById("idea4").style.display = "flex";
-
-    setTimeout(() => {
-        document.getElementById("bar").style.width = "100%";
-    },800);
-
-    setTimeout(() => {
-        document.getElementById("result").style.opacity = "1";
-    },7000);
-
-    setTimeout(() => {
-        document.getElementById("next2").style.display = "block";
-    },8500);
-}
-
-function startGame() {
-    document.getElementById("idea4").style.display = "none";
-    document.getElementById("game").style.display = "flex";
-}
-
-function fillLove() {
-
-    if(love < 100) love += Math.floor(Math.random()*2)+1;
-    if(love > 100) love = 100;
-
-    document.getElementById("fillText").innerText = love + "%";
-
-    let heart = document.getElementById("heart");
-
-    if(love < 30) heart.innerHTML = "🤍";
-    else if(love < 60) heart.innerHTML = "🩷";
-    else if(love < 90) heart.innerHTML = "💖";
-    else heart.innerHTML = "❤️";
-
-    if(love === 100) {
-        document.getElementById("finalText").innerHTML =
-        "💖 YOU COMPLETELY FILLED MY HEART 💖";
-
-        document.getElementById("nextGameBtn").style.display = "block";
-    }
-}
-
-/* IDEA 8 */
-function startHack() {
-
-    document.getElementById("game").style.display = "none";
-
-    let hack = document.getElementById("hack");
-    hack.style.display = "flex";
-
-    hack.innerHTML = `<div id="hackTitle">HACKING SYSTEM</div>`;
-
-    let lines = [
-        "Initializing system...",
-        "Bypassing security firewall...",
-        "Decrypting emotions...",
-        "Scanning neural memory...",
-        "Connecting heart server...",
-        "Access granted..."
-    ];
-
-    let i = 0;
-
-    function typeTerminal() {
-        if (i < lines.length) {
-            hack.innerHTML += lines[i] + "<br>";
-            i++;
-            setTimeout(typeTerminal, 1800);
-        } else {
-            accessDB();
-        }
-    }
-
-    function accessDB() {
-
-        hack.innerHTML += "<br>> Accessing heart database...<br>";
-
-        hack.innerHTML += `<div id="loadingBar"><div id="loadingFill"></div></div>`;
-
-        let fill = document.getElementById("loadingFill");
-        let w = 0;
-
-        let interval = setInterval(() => {
-            w += 2;
-            fill.style.width = w + "%";
-
-            if (w >= 100) {
-                clearInterval(interval);
-                memoryLoad();
-            }
-        }, 100);
-    }
-
-    function memoryLoad() {
-
-        hack.innerHTML += "<br>> Memory loading...<br>";
-
-        hack.innerHTML += `<div id="loadingBar"><div id="loadingFill2"></div></div>`;
-
-        let fill = document.getElementById("loadingFill2");
-        let w = 0;
-
-        let interval = setInterval(() => {
-            w += 1;
-            fill.style.width = w + "%";
-
-            if (w >= 100) {
-                clearInterval(interval);
-
-                hack.innerHTML = `
-                <div id="hackTitle">MEMORY FOUND ❤️</div>
-
-                <img src="https://i.8upload.com/image/a4b86d21b46b2f23/1778524562721.jpg"
-                style="width:250px;border-radius:20px;margin-top:20px;">
-
-                <h2 style="color:#00ff88;">HUSBAND & WIFE FOREVER ❤️</h2>
-                `;
-
-                // ✅ ADDED NEXT SCREEN TRIGGER ONLY
-                setTimeout(() => {
-                    hack.innerHTML += `
-                        <button id="nextHackBtn"
-                        style="margin-top:20px;padding:12px 25px;border:none;border-radius:20px;cursor:pointer;">
-                            NEXT ➜
-                        </button>
-                    `;
-
-                    document.getElementById("nextHackBtn").onclick = function () {
-                        hack.innerHTML = `
-                            <div style="font-size:40px;color:#00ff88;animation:flicker 1s infinite;">
-                                WILL YOU STAY FOREVER WITH ME?
-                            </div>
-
-                            <div style="position:absolute;bottom:20px;font-size:12px;color:#00ff88;">
-                                Reply on WhatsApp 💬
-                            </div>
-                        `;
-                    };
-
-                }, 5000);
-            }
-        }, 100);
-    }
-
-    typeTerminal();
-}
+},800);
 
 </script>
 
