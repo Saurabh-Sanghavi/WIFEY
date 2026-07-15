@@ -3,14 +3,11 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>For My Baacha ❤️</title>
+<title>Happy 6 Months ❤️</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 
@@ -20,19 +17,13 @@ padding:0;
 box-sizing:border-box;
 }
 
-html{
-scroll-behavior:smooth;
-}
-
 body{
 
-font-family:Poppins,sans-serif;
 background:#FDECEF;
+font-family:'Poppins',sans-serif;
 overflow:hidden;
 
 }
-
-/* ---------------- Pages ---------------- */
 
 .page{
 
@@ -45,10 +36,11 @@ align-items:center;
 flex-direction:column;
 
 position:absolute;
+
 top:0;
 left:100%;
 
-transition:1s;
+transition:0.8s;
 
 padding:40px;
 
@@ -60,135 +52,54 @@ left:0;
 
 }
 
-#page2,#page3{
-
-left:100%;
-
-}
-
-/* ---------------- Sliding Doors ---------------- */
-
-.door{
-
-position:fixed;
-
-top:0;
-
-width:50%;
-
-height:100%;
-
-background:#f7bfd1;
-
-z-index:1000;
-
-transition:2s;
-
-}
-
-.leftDoor{
-
-left:0;
-
-border-right:2px solid rgba(255,255,255,.5);
-
-}
-
-.rightDoor{
-
-right:0;
-
-border-left:2px solid rgba(255,255,255,.5);
-
-}
-
-.open .leftDoor{
-
-transform:translateX(-100%);
-
-}
-
-.open .rightDoor{
-
-transform:translateX(100%);
-
-}
-
-/* ---------------- Page 1 ---------------- */
-
 .title{
 
 font-family:'Great Vibes',cursive;
-
-font-size:95px;
-
+font-size:90px;
 color:#d63384;
-
-animation:float 3s infinite;
-
-text-align:center;
 
 }
 
 .subtitle{
 
 margin-top:15px;
-
-font-size:24px;
-
+font-size:22px;
 color:#8b5d73;
 
 }
 
-.nextBtn{
+.btn{
 
-margin-top:70px;
-
-padding:16px 45px;
-
-border:none;
-
-border-radius:50px;
+margin-top:60px;
+padding:15px 45px;
 
 background:#ff69b4;
-
 color:white;
 
-font-size:22px;
+border:none;
+border-radius:40px;
+
+font-size:20px;
 
 cursor:pointer;
 
-transition:.3s;
-
 }
 
-.nextBtn:hover{
-
-transform:scale(1.08);
+.btn:hover{
 
 background:#ff4f9d;
 
 }
 
-@keyframes float{
-
-0%{transform:translateY(0);}
-50%{transform:translateY(-10px);}
-100%{transform:translateY(0);}
-
-}
-
-/* ---------------- Page 2 ---------------- */
+/* PAGE 2 */
 
 .container{
 
-width:90%;
-
 display:flex;
-
 justify-content:space-between;
-
 align-items:center;
+
+width:90%;
 
 }
 
@@ -201,12 +112,8 @@ width:45%;
 .left h1{
 
 font-family:'Great Vibes',cursive;
-
-font-size:85px;
-
+font-size:80px;
 color:#d63384;
-
-line-height:1.15;
 
 }
 
@@ -216,46 +123,40 @@ width:35%;
 
 }
 
-.counter{
+.box{
 
-background:linear-gradient(135deg,#ffd8e6,#ffb9d2);
+background:white;
 
 padding:18px;
 
-margin:18px 0;
+margin:15px 0;
 
-border-radius:20px;
+border-radius:18px;
 
 text-align:center;
 
-font-size:28px;
+font-size:24px;
 
-font-weight:600;
-
-color:#fff;
-
-box-shadow:0 12px 25px rgba(255,105,180,.25);
-
-transition:.3s;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
 
 }
-
-.counter:hover{
-
-transform:translateY(-5px);
-
-}
-/* ---------------- Page 3 ---------------- */
 
 .letter{
 
 background:white;
-width:900px;
+
+width:850px;
+
 max-width:90%;
-padding:45px;
-border-radius:30px;
-box-shadow:0 15px 35px rgba(0,0,0,.15);
+
+padding:40px;
+
+border-radius:25px;
+
+box-shadow:0 10px 30px rgba(0,0,0,.15);
+
 max-height:80vh;
+
 overflow-y:auto;
 
 }
@@ -264,48 +165,31 @@ overflow-y:auto;
 
 font-family:'Great Vibes',cursive;
 font-size:60px;
-color:#d63384;
 text-align:center;
+color:#d63384;
 
 }
 
 .letter p{
 
-margin-top:30px;
-font-size:20px;
-line-height:2;
-color:#5d4053;
-text-align:left;
+margin-top:25px;
+font-size:19px;
+line-height:1.9;
+color:#555;
 
 }
 
 .signature{
 
 margin-top:35px;
-font-family:'Great Vibes',cursive;
-font-size:48px;
-color:#d63384;
+
 text-align:center;
 
-}
+font-family:'Great Vibes',cursive;
 
-.finishBtn{
+font-size:45px;
 
-margin:35px auto 0;
-display:block;
-padding:15px 40px;
-border:none;
-border-radius:40px;
-background:#ff69b4;
-color:white;
-font-size:22px;
-cursor:pointer;
-
-}
-
-.finishBtn:hover{
-
-background:#ff4f9d;
+color:#d63384;
 
 }
 
@@ -315,28 +199,27 @@ background:#ff4f9d;
 
 <body>
 
-<div class="door leftDoor"></div>
-<div class="door rightDoor"></div>
-
-<!-- ================= PAGE 1 ================= -->
-
 <div id="page1" class="page">
 
 <h1 class="title">
+
 Hello Baacha ❤️
+
 </h1>
 
 <p class="subtitle">
+
 Welcome to our little world
+
 </p>
 
-<button class="nextBtn" onclick="nextPage(1)">
+<button class="btn" onclick="next(1)">
+
 Next ❤️
+
 </button>
 
 </div>
-
-<!-- ================= PAGE 2 ================= -->
 
 <div id="page2" class="page">
 
@@ -356,18 +239,20 @@ Anniversary ❤️
 
 <div class="right">
 
-<div class="counter">🌸 Half Year</div>
+<div class="box">🌸 Half Year</div>
 
-<div class="counter">💕 6 Months</div>
+<div class="box">💕 6 Months</div>
 
-<div class="counter">📅 183 Days</div>
+<div class="box">📅 183 Days</div>
 
-<div class="counter">💖 26 Weeks</div>
+<div class="box">💖 26 Weeks</div>
 
-<div class="counter">⏰ 4380 Hours</div>
+<div class="box">⏰ 4380 Hours</div>
 
-<button class="nextBtn" onclick="nextPage(2)">
-Open Letter ❤️
+<button class="btn" onclick="next(2)">
+
+Read My Letter ❤️
+
 </button>
 
 </div>
@@ -376,19 +261,17 @@ Open Letter ❤️
 
 </div>
 
-<!-- ================= PAGE 3 ================= -->
-
 <div id="page3" class="page">
 
 <div class="letter">
 
 <h1>
+
 ❤️ A Letter From My Heart ❤️
+
 </h1>
 
-<p>
-
-Happy 6 Months, My Baacha ❤️
+<pHappy 6 Months, My Baacha ❤️
 
 <br><br>
 
@@ -396,15 +279,15 @@ Six months ago, I never imagined that one person could bring so much happiness i
 
 <br><br>
 
-Thank you for every smile, every late-night conversation, every laugh, every little fight and every beautiful memory we've created together.
+Thank you for every smile, every late-night conversation, every laugh, every little fight, and every beautiful memory we've created together.
 
 <br><br>
 
-You have become my safe place, my biggest happiness and my favourite person.
+You have become my safe place, my biggest happiness, and my favourite person.
 
 <br><br>
 
-No matter what life brings, I promise to always choose you, support you and love you with all my heart.
+No matter what life brings, I promise to always choose you, support you, respect you, and love you with all my heart.
 
 <br><br>
 
@@ -412,14 +295,11 @@ These six months are only the beginning of our beautiful story.
 
 <br><br>
 
-Happy 6-Month Anniversary ❤️
-<br><br>
-
-I can't wait to make many more memories with you, laugh with you, support you, and celebrate every little milestone together.
+I can't wait to celebrate many more months, years, and a lifetime together with you.
 
 <br><br>
 
-Thank you for being my happiness, my peace, and my favourite person.
+Happy 6-Month Anniversary, My Love ❤️
 
 </p>
 
@@ -430,9 +310,9 @@ Saurabh ❤️
 
 </div>
 
-<button class="finishBtn" onclick="finishLove()">
+<button class="btn" onclick="finishLove()">
 
-Forever ❤️
+I Love You ❤️
 
 </button>
 
@@ -440,28 +320,18 @@ Forever ❤️
 
 </div>
 
-<script>
+ function next(page){
 
-setTimeout(function(){
-
-document.body.classList.add("open");
-
-},700);
-
-function nextPage(page){
-
-if(page==1){
+if(page===1){
 
 document.getElementById("page1").style.left="-100%";
-
 document.getElementById("page2").style.left="0";
 
 }
 
-if(page==2){
+if(page===2){
 
 document.getElementById("page2").style.left="-100%";
-
 document.getElementById("page3").style.left="0";
 
 document.body.style.overflowY="auto";
@@ -472,12 +342,14 @@ document.body.style.overflowY="auto";
 
 function finishLove(){
 
-alert("Happy 6-Month Anniversary ❤️\n\nI Love You Forever, Baacha 💖");
+alert("❤️ Happy 6-Month Anniversary ❤️\n\nI Love You Forever, Baacha 💖");
 
 }
 
 </script>
 
 </body>
-
 </html> 
+
+<script>>
+  
