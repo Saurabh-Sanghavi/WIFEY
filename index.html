@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <title>For My Baacha ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 
@@ -18,87 +20,152 @@ padding:0;
 box-sizing:border-box;
 }
 
-body{
-background:#FDECEF;
-overflow:hidden;
-font-family:'Poppins',sans-serif;
+html{
+scroll-behavior:smooth;
 }
 
+body{
+
+font-family:Poppins,sans-serif;
+background:#FDECEF;
+overflow:hidden;
+
+}
+
+/* ---------------- Pages ---------------- */
+
 .page{
+
 width:100%;
 height:100vh;
+
 display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
+
 position:absolute;
 top:0;
-left:0;
+left:100%;
+
 transition:1s;
+
+padding:40px;
+
+}
+
+#page1{
+
+left:0;
+
 }
 
 #page2,#page3{
-display:none;
+
+left:100%;
+
 }
 
-/* Doors */
+/* ---------------- Sliding Doors ---------------- */
 
 .door{
+
 position:fixed;
+
 top:0;
+
 width:50%;
+
 height:100%;
-background:#f8bfd0;
-z-index:999;
+
+background:#f7bfd1;
+
+z-index:1000;
+
 transition:2s;
+
 }
 
-.left{
+.leftDoor{
+
 left:0;
+
+border-right:2px solid rgba(255,255,255,.5);
+
 }
 
-.right{
+.rightDoor{
+
 right:0;
+
+border-left:2px solid rgba(255,255,255,.5);
+
 }
 
-.open .left{
+.open .leftDoor{
+
 transform:translateX(-100%);
+
 }
 
-.open .right{
+.open .rightDoor{
+
 transform:translateX(100%);
+
 }
 
-h1{
+/* ---------------- Page 1 ---------------- */
+
+.title{
+
 font-family:'Great Vibes',cursive;
-font-size:90px;
+
+font-size:95px;
+
 color:#d63384;
+
 animation:float 3s infinite;
+
+text-align:center;
+
 }
 
-p{
-font-size:22px;
+.subtitle{
+
 margin-top:15px;
+
+font-size:24px;
+
 color:#8b5d73;
+
 }
 
-button{
+.nextBtn{
 
-margin-top:60px;
-padding:15px 45px;
+margin-top:70px;
+
+padding:16px 45px;
+
 border:none;
-border-radius:40px;
+
+border-radius:50px;
+
 background:#ff69b4;
+
 color:white;
+
 font-size:22px;
+
 cursor:pointer;
+
 transition:.3s;
 
 }
 
-button:hover{
+.nextBtn:hover{
 
 transform:scale(1.08);
+
 background:#ff4f9d;
 
 }
@@ -111,12 +178,134 @@ background:#ff4f9d;
 
 }
 
-.card{
+/* ---------------- Page 2 ---------------- */
+
+.container{
+
+width:90%;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+}
+
+.left{
+
+width:45%;
+
+}
+
+.left h1{
+
+font-family:'Great Vibes',cursive;
+
+font-size:85px;
+
+color:#d63384;
+
+line-height:1.15;
+
+}
+
+.right{
+
+width:35%;
+
+}
+
+.counter{
+
+background:linear-gradient(135deg,#ffd8e6,#ffb9d2);
+
+padding:18px;
+
+margin:18px 0;
+
+border-radius:20px;
+
+text-align:center;
+
+font-size:28px;
+
+font-weight:600;
+
+color:#fff;
+
+box-shadow:0 12px 25px rgba(255,105,180,.25);
+
+transition:.3s;
+
+}
+
+.counter:hover{
+
+transform:translateY(-5px);
+
+}
+/* ---------------- Page 3 ---------------- */
+
+.letter{
 
 background:white;
-padding:35px;
-border-radius:25px;
-box-shadow:0 10px 30px rgba(0,0,0,.15);
+width:900px;
+max-width:90%;
+padding:45px;
+border-radius:30px;
+box-shadow:0 15px 35px rgba(0,0,0,.15);
+max-height:80vh;
+overflow-y:auto;
+
+}
+
+.letter h1{
+
+font-family:'Great Vibes',cursive;
+font-size:60px;
+color:#d63384;
+text-align:center;
+
+}
+
+.letter p{
+
+margin-top:30px;
+font-size:20px;
+line-height:2;
+color:#5d4053;
+text-align:left;
+
+}
+
+.signature{
+
+margin-top:35px;
+font-family:'Great Vibes',cursive;
+font-size:48px;
+color:#d63384;
+text-align:center;
+
+}
+
+.finishBtn{
+
+margin:35px auto 0;
+display:block;
+padding:15px 40px;
+border:none;
+border-radius:40px;
+background:#ff69b4;
+color:white;
+font-size:22px;
+cursor:pointer;
+
+}
+
+.finishBtn:hover{
+
+background:#ff4f9d;
 
 }
 
@@ -126,86 +315,78 @@ box-shadow:0 10px 30px rgba(0,0,0,.15);
 
 <body>
 
-<div class="door left"></div>
-<div class="door right"></div>
+<div class="door leftDoor"></div>
+<div class="door rightDoor"></div>
 
-<!-- PAGE 1 -->
+<!-- ================= PAGE 1 ================= -->
 
 <div id="page1" class="page">
 
-<h1>Hello Baacha ❤️</h1>
+<h1 class="title">
+Hello Baacha ❤️
+</h1>
 
-<p>Welcome to our little world</p>
+<p class="subtitle">
+Welcome to our little world
+</p>
 
-<button onclick="showPage2()">
-
+<button class="nextBtn" onclick="nextPage(1)">
 Next ❤️
-
 </button>
 
 </div>
 
-<!-- PAGE 2 -->
+<!-- ================= PAGE 2 ================= -->
 
 <div id="page2" class="page">
 
-<div class="card">
+<div class="container">
 
-<h1 style="font-size:70px">
+<div class="left">
 
-Happy 6-Month Anniversary ❤️
+<h1>
+
+Happy<br>
+6-Month<br>
+Anniversary ❤️
 
 </h1>
 
-<p style="font-size:28px;margin-top:35px">
+</div>
 
-🌸 Half Year
+<div class="right">
 
-</p>
+<div class="counter">🌸 Half Year</div>
 
-<p style="font-size:28px">
+<div class="counter">💕 6 Months</div>
 
-💕 6 Months
+<div class="counter">📅 183 Days</div>
 
-</p>
+<div class="counter">💖 26 Weeks</div>
 
-<p style="font-size:28px">
+<div class="counter">⏰ 4380 Hours</div>
 
-📅 183 Days
-
-</p>
-
-<p style="font-size:28px">
-
-💖 26 Weeks
-
-</p>
-
-<p style="font-size:28px">
-
-⏰ 4380 Hours
-
-</p>
-
-<button onclick="showPage3()">
-
+<button class="nextBtn" onclick="nextPage(2)">
 Open Letter ❤️
-
 </button>
 
 </div>
 
 </div>
 
-<!-- PAGE 3 STARTS HERE -->
-<div id="page3" class="page">
- <div class="card" style="max-width:800px;padding:45px;">
+</div>
 
-<h1 style="font-size:65px;">
+<!-- ================= PAGE 3 ================= -->
+
+<div id="page3" class="page">
+
+<div class="letter">
+
+<h1>
 ❤️ A Letter From My Heart ❤️
 </h1>
 
-<p style="font-size:22px;line-height:2;margin-top:30px;">
+<p>
 
 Happy 6 Months, My Baacha ❤️
 
@@ -215,11 +396,11 @@ Six months ago, I never imagined that one person could bring so much happiness i
 
 <br><br>
 
-Thank you for every smile, every late-night conversation, every laugh, every little fight, and every beautiful memory we've created together.
+Thank you for every smile, every late-night conversation, every laugh, every little fight and every beautiful memory we've created together.
 
 <br><br>
 
-You have become my safe place, my biggest happiness, and my favorite person.
+You have become my safe place, my biggest happiness and my favourite person.
 
 <br><br>
 
@@ -231,18 +412,27 @@ These six months are only the beginning of our beautiful story.
 
 <br><br>
 
-Happy 6-Month Anniversary, My Love ❤️
+Happy 6-Month Anniversary ❤️
+<br><br>
+
+I can't wait to make many more memories with you, laugh with you, support you, and celebrate every little milestone together.
+
+<br><br>
+
+Thank you for being my happiness, my peace, and my favourite person.
 
 </p>
 
-<h1 style="font-size:55px;margin-top:30px;">
+<div class="signature">
+
 Forever Yours,<br>
 Saurabh ❤️
-</h1>
 
-<button onclick="alert('More surprises coming soon ❤️')">
+</div>
 
-Finish ❤️
+<button class="finishBtn" onclick="finishLove()">
+
+Forever ❤️
 
 </button>
 
@@ -256,21 +446,33 @@ setTimeout(function(){
 
 document.body.classList.add("open");
 
-},800);
+},700);
 
-function showPage2(){
+function nextPage(page){
 
-document.getElementById("page1").style.display="none";
+if(page==1){
 
-document.getElementById("page2").style.display="flex";
+document.getElementById("page1").style.left="-100%";
+
+document.getElementById("page2").style.left="0";
 
 }
 
-function showPage3(){
+if(page==2){
 
-document.getElementById("page2").style.display="none";
+document.getElementById("page2").style.left="-100%";
 
-document.getElementById("page3").style.display="flex";
+document.getElementById("page3").style.left="0";
+
+document.body.style.overflowY="auto";
+
+}
+
+}
+
+function finishLove(){
+
+alert("Happy 6-Month Anniversary ❤️\n\nI Love You Forever, Baacha 💖");
 
 }
 
