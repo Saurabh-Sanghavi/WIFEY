@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Open My Heart ❤️</title>
+<title>For My Baacha ❤️</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
@@ -17,178 +19,104 @@ box-sizing:border-box;
 }
 
 body{
-
 background:#FDECEF;
+overflow:hidden;
+font-family:'Poppins',sans-serif;
+}
+
+.page{
+width:100%;
 height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-overflow:hidden;
-font-family:Poppins,sans-serif;
-
+flex-direction:column;
+position:absolute;
+top:0;
+left:0;
+transition:1s;
 }
 
-.container{
-
-text-align:center;
-
+#page2,#page3{
+display:none;
 }
 
-h2{
+/* Doors */
 
+.door{
+position:fixed;
+top:0;
+width:50%;
+height:100%;
+background:#f8bfd0;
+z-index:999;
+transition:2s;
+}
+
+.left{
+left:0;
+}
+
+.right{
+right:0;
+}
+
+.open .left{
+transform:translateX(-100%);
+}
+
+.open .right{
+transform:translateX(100%);
+}
+
+h1{
 font-family:'Great Vibes',cursive;
-font-size:60px;
+font-size:90px;
 color:#d63384;
-margin-bottom:40px;
+animation:float 3s infinite;
+}
+
+p{
+font-size:22px;
+margin-top:15px;
+color:#8b5d73;
+}
+
+button{
+
+margin-top:60px;
+padding:15px 45px;
+border:none;
+border-radius:40px;
+background:#ff69b4;
+color:white;
+font-size:22px;
+cursor:pointer;
+transition:.3s;
 
 }
 
-.envelope{
+button:hover{
 
-position:relative;
-width:320px;
-height:220px;
-margin:auto;
-cursor:pointer;
-animation:float 3s ease-in-out infinite;
+transform:scale(1.08);
+background:#ff4f9d;
 
 }
 
 @keyframes float{
 
 0%{transform:translateY(0);}
-50%{transform:translateY(-12px);}
+50%{transform:translateY(-10px);}
 100%{transform:translateY(0);}
 
 }
 
-.back{
+.card{
 
-position:absolute;
-width:100%;
-height:100%;
-background:#f6b6c8;
-border-radius:8px;
-overflow:hidden;
-
-}
-
-.flap{
-
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:110px;
-background:#f3a8bd;
-clip-path:polygon(0 0,100% 0,50% 100%);
-transform-origin:top;
-transition:1s;
-
-}
-
-.leftFold{
-
-position:absolute;
-bottom:0;
-left:0;
-width:50%;
-height:100%;
-background:#f8bfd0;
-clip-path:polygon(0 0,100% 100%,0 100%);
-
-}
-
-.rightFold{
-
-position:absolute;
-bottom:0;
-right:0;
-width:50%;
-height:100%;
-background:#f8bfd0;
-clip-path:polygon(100% 0,100% 100%,0 100%);
-
-}
-
-.letter{
-
-position:absolute;
-left:10%;
-bottom:15px;
-width:80%;
-height:170px;
-background:white;
-border-radius:10px;
-box-shadow:0 8px 20px rgba(0,0,0,.15);
-display:flex;
-justify-content:center;
-align-items:center;
-font-family:'Great Vibes',cursive;
-font-size:38px;
-color:#d63384;
-transition:1.2s;
-
-}
-
-.seal{
-
-position:absolute;
-left:50%;
-top:75px;
-transform:translateX(-50%);
-width:60px;
-height:60px;
-background:#ff4f8b;
-border-radius:50%;
-display:flex;
-justify-content:center;
-align-items:center;
-color:white;
-font-size:24px;
-box-shadow:0 5px 15px rgba(0,0,0,.2);
-z-index:5;
-
-}
-
-.open .flap{
-
-transform:rotateX(180deg);
-
-}
-
-.open .letter{
-
-transform:translateY(-180px);
-
-}
-
-#message{
-
-display:none;
-max-width:700px;
 background:white;
 padding:35px;
-border-radius:20px;
-box-shadow:0 15px 30px rgba(0,0,0,.15);
-margin-top:50px;
-line-height:1.8;
-font-size:20px;
-color:#5d4053;
-
-}
-
-.next{
-
-display:none;
-margin-top:25px;
-padding:15px 35px;
-border:none;
-background:#ff69b4;
-color:white;
-border-radius:40px;
-font-size:20px;
-cursor:pointer;
+border-radius:25px;
+box-shadow:0 10px 30px rgba(0,0,0,.15);
 
 }
 
@@ -198,124 +126,156 @@ cursor:pointer;
 
 <body>
 
-<div class="container">
+<div class="door left"></div>
+<div class="door right"></div>
 
-<h2>Open My Heart ❤️</h2>
+<!-- PAGE 1 -->
 
-<div class="envelope" onclick="openLetter()">
+<div id="page1" class="page">
 
-<div class="back"></div>
+<h1>Hello Baacha ❤️</h1>
 
-<div class="letter">
-For My Baacha ❤️
-</div>
+<p>Welcome to our little world</p>
 
-<div class="leftFold"></div>
+<button onclick="showPage2()">
 
-<div class="rightFold"></div>
+Next ❤️
 
-<div class="flap"></div>
-
-<div class="seal">
-❤
-</div>
-
-</div>
-
-<div id="message">
-
-<div id="typing"></div>
-
-<button class="next">
-Continue ❤️
 </button>
 
 </div>
+
+<!-- PAGE 2 -->
+
+<div id="page2" class="page">
+
+<div class="card">
+
+<h1 style="font-size:70px">
+
+Happy 6-Month Anniversary ❤️
+
+</h1>
+
+<p style="font-size:28px;margin-top:35px">
+
+🌸 Half Year
+
+</p>
+
+<p style="font-size:28px">
+
+💕 6 Months
+
+</p>
+
+<p style="font-size:28px">
+
+📅 183 Days
+
+</p>
+
+<p style="font-size:28px">
+
+💖 26 Weeks
+
+</p>
+
+<p style="font-size:28px">
+
+⏰ 4380 Hours
+
+</p>
+
+<button onclick="showPage3()">
+
+Open Letter ❤️
+
+</button>
+
+</div>
+
+</div>
+
+<!-- PAGE 3 STARTS HERE -->
+<div id="page3" class="page">
+ <div class="card" style="max-width:800px;padding:45px;">
+
+<h1 style="font-size:65px;">
+❤️ A Letter From My Heart ❤️
+</h1>
+
+<p style="font-size:22px;line-height:2;margin-top:30px;">
+
+Happy 6 Months, My Baacha ❤️
+
+<br><br>
+
+Six months ago, I never imagined that one person could bring so much happiness into my life.
+
+<br><br>
+
+Thank you for every smile, every late-night conversation, every laugh, every little fight, and every beautiful memory we've created together.
+
+<br><br>
+
+You have become my safe place, my biggest happiness, and my favorite person.
+
+<br><br>
+
+No matter what life brings, I promise to always choose you, support you and love you with all my heart.
+
+<br><br>
+
+These six months are only the beginning of our beautiful story.
+
+<br><br>
+
+Happy 6-Month Anniversary, My Love ❤️
+
+</p>
+
+<h1 style="font-size:55px;margin-top:30px;">
+Forever Yours,<br>
+Saurabh ❤️
+</h1>
+
+<button onclick="alert('More surprises coming soon ❤️')">
+
+Finish ❤️
+
+</button>
+
+</div>
+
+</div>
+
 <script>
 
-const text=`Happy 6 Months, My Baacha ❤️
-
-Six months ago you entered my life and unknowingly became the most beautiful part of it.
-
-Thank you for every smile, every laugh, every late-night call and every memory we've created together.
-
-No matter where life takes us, I promise to keep choosing you again and again.
-
-Happy 6-Month Anniversary, My Love.
-
-I Love You Forever ❤️`;
-
-let i=0;
-
-function openLetter(){
-
-document.querySelector(".envelope").classList.add("open");
-
 setTimeout(function(){
 
-document.getElementById("message").style.display="block";
+document.body.classList.add("open");
 
-typeWriter();
+},800);
 
-createHearts();
+function showPage2(){
 
-},1200);
+document.getElementById("page1").style.display="none";
 
-}
-
-function typeWriter(){
-
-if(i<text.length){
-
-document.getElementById("typing").innerHTML+=text.charAt(i);
-
-i++;
-
-setTimeout(typeWriter,35);
-
-}else{
-
-document.querySelector(".next").style.display="inline-block";
+document.getElementById("page2").style.display="flex";
 
 }
 
-}
+function showPage3(){
 
-function createHearts(){
+document.getElementById("page2").style.display="none";
 
-for(let i=0;i<30;i++){
-
-let heart=document.createElement("div");
-
-heart.innerHTML="❤️";
-
-heart.style.position="fixed";
-heart.style.left=Math.random()*100+"vw";
-heart.style.top="100vh";
-heart.style.fontSize=(18+Math.random()*18)+"px";
-heart.style.pointerEvents="none";
-heart.style.transition="4s linear";
-
-document.body.appendChild(heart);
-
-setTimeout(function(){
-
-heart.style.transform="translateY(-120vh)";
-heart.style.opacity="0";
-
-},50);
-
-setTimeout(function(){
-
-heart.remove();
-
-},4000);
-
-}
+document.getElementById("page3").style.display="flex";
 
 }
 
 </script>
 
 </body>
-</html>
+
+</html> 
