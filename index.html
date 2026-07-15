@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Hello Baacha ❤️</title>
+<title>For My Baacha ❤️</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
@@ -17,13 +17,32 @@ box-sizing:border-box;
 }
 
 body{
-overflow:hidden;
 background:#FDECEF;
-font-family:Arial, sans-serif;
-height:100vh;
+overflow:hidden;
+font-family:Arial,sans-serif;
 }
 
-/* Sliding Doors */
+/* ---------- PAGE ---------- */
+
+.page{
+width:100vw;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+position:absolute;
+top:0;
+left:0;
+transition:1s;
+}
+
+#page2{
+display:none;
+padding:60px;
+}
+
+/* ---------- DOORS ---------- */
 
 .door{
 position:fixed;
@@ -31,111 +50,189 @@ top:0;
 width:50%;
 height:100%;
 background:#F8C8DC;
-z-index:10;
-transition:2.2s ease-in-out;
+z-index:100;
+transition:2s;
 }
 
 .left{
 left:0;
-border-right:2px solid rgba(255,255,255,.35);
+border-right:2px solid white;
 }
 
 .right{
 right:0;
-border-left:2px solid rgba(255,255,255,.35);
+border-left:2px solid white;
 }
 
-body.open .left{
+.open .left{
 transform:translateX(-100%);
 }
 
-body.open .right{
+.open .right{
 transform:translateX(100%);
 }
 
-/* Main */
-
-.container{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-opacity:0;
-transform:scale(.9);
-transition:1.5s;
-}
-
-body.open .container{
-opacity:1;
-transform:scale(1);
-}
+/* ---------- PAGE 1 ---------- */
 
 h1{
+font-family:'Great Vibes',cursive;
+font-size:90px;
+color:#d63384;
+text-align:center;
+animation:float 3s infinite;
+}
+
+.subtitle{
+margin-top:15px;
+font-size:22px;
+color:#b15d82;
+letter-spacing:2px;
+}
+
+.next{
+margin-top:80px;
+padding:16px 45px;
+font-size:22px;
+border:none;
+border-radius:50px;
+background:#ff69b4;
+color:white;
+cursor:pointer;
+transition:.3s;
+}
+
+.next:hover{
+background:#ff4d9a;
+transform:scale(1.08);
+}
+
+/* ---------- PAGE 2 ---------- */
+
+.container{
+
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+width:100%;
+
+}
+
+.leftSide{
+width:45%;
+}
+
+.leftSide h2{
 
 font-family:'Great Vibes',cursive;
-font-size:92px;
-font-weight:normal;
+font-size:80px;
 color:#d63384;
-text-shadow:
-0 0 10px rgba(255,255,255,.9),
-0 0 30px rgba(255,182,193,.7);
+line-height:1.2;
 
-animation:float 3s ease-in-out infinite;
+}
+
+.rightSide{
+width:35%;
+}
+
+.brush{
+
+background:#ffb6c1;
+margin-bottom:18px;
+padding:18px;
+font-size:28px;
+font-weight:bold;
+text-align:center;
+color:white;
+border-radius:40px;
+box-shadow:0 8px 20px rgba(0,0,0,.15);
+
 }
 
 @keyframes float{
 
-0%{
-transform:translateY(0px);
-}
+0%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(0);}
 
-50%{
-transform:translateY(-10px);
-}
-
-100%{
-transform:translateY(0px);
-}
-
-}
-
-.small{
-margin-top:18px;
-font-size:20px;
-color:#b05c82;
-letter-spacing:3px;
-opacity:.8;
-font-family:Georgia, serif;
 }
 
 </style>
 
 </head>
+
 <body>
 
 <div class="door left"></div>
 <div class="door right"></div>
 
-<div class="container">
+<div id="page1" class="page">
 
 <h1>Hello Baacha ❤️</h1>
 
-<div class="small">
-It's 16 July Today
+<div class="subtitle">
+Welcome to our little world
+</div>
+
+<button class="next" onclick="nextPage()">
+Next ❤️
+</button>
+
+</div>
+
+<div id="page2" class="page">
+
+<div class="container">
+
+<div class="leftSide">
+
+<h2>
+
+Happy<br>
+6-Month<br>
+Anniversary ❤️
+
+</h2>
+
+</div>
+
+<div class="rightSide">
+
+<div class="brush">Half Year</div>
+
+<div class="brush">6 Months</div>
+
+  <div class="brush">183 Days</div>
+
+<div class="brush">26 Weeks</div>
+
+<div class="brush">4380 Hours</div>
+
+</div>
+
 </div>
 
 </div>
 
 <script>
 
-setTimeout(()=>{
+setTimeout(function(){
 
 document.body.classList.add("open");
 
 },800);
 
+function nextPage(){
+
+document.getElementById("page1").style.display="none";
+
+document.getElementById("page2").style.display="flex";
+
+document.body.style.overflow="auto";
+
+}
+
 </script>
 
 </body>
+
 </html>
